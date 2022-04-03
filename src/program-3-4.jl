@@ -1,7 +1,6 @@
-# Program 3.1 1DbareBones.c: Bare-bones one-dimensional simulation with a hard source.
+# Program 3.4 1Dadditive.c: One-dimensional FDTD program with an additive source.
 # John B. Schneider
 # M.K AbdElRahman
-
 using Plots
 using LaTeXStrings
 
@@ -30,8 +29,8 @@ animation = @animate for t = 1:NTimeSteps
         # ez[1] remains zero --> PEC
         ez[x] = ez[x] + (hy[x] - hy[x-1])
     end
-    # hardwire a source node
-    ez[1] = exp(-(t - 30)^2 / 100)
+    # use additive source at node 50
+    ez[50] += exp(-(t - 30)^2 / 100)
 
     plot(
         ez,
@@ -47,4 +46,4 @@ animation = @animate for t = 1:NTimeSteps
     plot!(hy, label = L"H_y", color = :blue, linewidth = 3)
 end every 5
 
-gif(animation, "animations/Bare-bones 1D FDTD simulation with a hard source.gif", fps = 15)
+gif(animation, "animations/Bare-bones 1D FDTD simulation with an additive source.gif", fps = 15)
