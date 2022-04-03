@@ -46,4 +46,4 @@ animation = @animate for t = 1:NTimeSteps
     plot!(hy, label = L"H_y", color = :blue, linewidth = 3)
 end every 5
 
-gif(animation, "animations/Bare-bones 1D FDTD simulation with an additive source.gif", fps = 15)
+gif(animation, "animations/additive_source.gif", fps = 15)
